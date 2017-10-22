@@ -3,14 +3,14 @@
 > New as of 0.3.10
 
 ```
-domains:add <app> DOMAIN                 # Add a domain to app
-domains:add-global <domain>              # Add global domain name
-domains [<app>]                          # List domains
-domains:clear <app>                      # Clear all domains for app
-domains:disable <app>                    # Disable VHOST support
-domains:enable <app>                     # Enable VHOST support
-domains:remove <app> DOMAIN              # Remove a domain from app
-domains:remove-global <domain>           # Remove global domain name
+domains:add <app> <domain> [<domain> ...]      # Add domains to app
+domains:add-global <domain> [<domain> ...]     # Add global domain names
+domains [<app>]                                # List domains
+domains:clear <app>                            # Clear all domains for app
+domains:disable <app>                          # Disable VHOST support
+domains:enable <app>                           # Enable VHOST support
+domains:remove <app> <domain> [<domain> ...]   # Remove domains from app
+domains:remove-global <domain> [<domain> ...]  # Remove global domain names
 ```
 
 > Adding a domain before deploying an application will result in port mappings being set. This may cause issues for applications that use non-standard ports, as those will not be automatically detected. Please refer to the [proxy documentation](/dokku/advanced-usage/proxy-management/) for information as to how to reconfigure the mappings.
@@ -72,7 +72,7 @@ dokku domains:remove myapp example.com
 
 ## Default site
 
-By default, dokku will route any received request with an unknown HOST header value to the lexicographically first site in the nginx config stack. If this is not the desired behavior, you may want to add the following configuration to the global nginx configuration. This will catch all unknown HOST header values and return a `410 Gone` response. You can replace the `return 410;` with `return 444;` which will cause nginx to not respond to requests that do not match known domains (connection refused).
+By default, Dokku will route any received request with an unknown HOST header value to the lexicographically first site in the nginx config stack. If this is not the desired behavior, you may want to add the following configuration to the global nginx configuration. This will catch all unknown HOST header values and return a `410 Gone` response. You can replace the `return 410;` with `return 444;` which will cause nginx to not respond to requests that do not match known domains (connection refused).
 
 ```nginx
 server {
@@ -98,4 +98,4 @@ include /etc/nginx/sites-enabled/*;
 include /etc/nginx/conf.d/*.conf;
 ```
 
-Alternatively, you may push an app to your dokku host with a name like "00-default". As long as it lists first in `ls /home/dokku/*/nginx.conf | head`, it will be used as the default nginx vhost.
+Alternatively, you may push an app to your Dokku host with a name like "00-default". As long as it lists first in `ls /home/dokku/*/nginx.conf | head`, it will be used as the default nginx vhost.

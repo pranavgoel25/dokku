@@ -80,7 +80,7 @@ The `certs:remove` command only works on app-specific certificates. It will `rm`
 
 ## HSTS Header
 
-The [HSTS header](https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security) is an HTTP header that can inform browsers that all requests to a given site should be made via HTTPS. dokku does not, by default, enable this header. It is thus left up to you, the user, to enable it for your site.
+The [HSTS header](https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security) is an HTTP header that can inform browsers that all requests to a given site should be made via HTTPS. Dokku does not, by default, enable this header. It is thus left up to you, the user, to enable it for your site.
 
 Beware that if you enable the header and a subsequent deploy of your application results in an HTTP deploy (for whatever reason), the way the header works means that a browser will not attempt to request the HTTP version of your site if the HTTPS version fails.
 
@@ -126,3 +126,7 @@ Only use this option if:
 If it's possible to make HTTP/S requests directly to Nginx, bypassing the load balancer, or if the load balancer is not configured to set these headers, then it becomes possible for a client to set these headers to arbitrary values.
 
 This could result in security issue, for example, if your application looks at the value of the `X-Forwarded-Proto` to determine if the request was made over HTTPS.
+
+### SSL Port Exposure
+
+When your app is served from port `80` then the `/home/dokku/APP/nginx.conf` file will automatically be updated to instruct nginx to respond to ssl on port 443 as a new cert is added.  If your app uses a non-standard port (perhaps you have a dockerfile deploy exposing port `99999`) you may need to manually expose an ssl port via `dokku proxy:ports-add <APP> https:443:99999`.  

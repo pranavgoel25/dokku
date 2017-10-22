@@ -1,5 +1,71 @@
 # History
 
+## 0.7.2
+
+This minor release contains mostly documentation changes, and should be fully backwards compatible with previous 0.7.x releases.
+
+Thanks to all the contributors who helped with this release!
+
+### Bug Fixes
+
+- #2392: @swg Specify python2 for get_json functions
+- #2408: @jcscottiii Use $DOKKU_VHOST_ENABLE instead of $VHOST_ENABLE in bootstrap.sh
+- #2417: @PWAckerman Remove extra quotes from DYNO environment variable
+- #2426: @michaelshobbs add force option on docker tag when available
+
+### New Features
+
+- #2418: @michaelshobbs Update to plugn 0.2.2
+- #2423: @michaelshobbs Update to herokuish 0.3.19
+
+### Documentation
+
+- #2393: @josegonzalez Deprecate all process manager plugins
+- #2394: @josegonzalez Deprecate old graphite plugin and add official graphite plugin
+- #2395: @josegonzalez Deprecate sekjun9878/redis
+- #2396: @josegonzalez Deprecate multi-buildpack plugin
+- #2397: @josegonzalez Update compatibility of dokku feature plugin
+- #2398: @josegonzalez Update compatibility of "other plugins"
+- #2404: @bascht Fix docker build syntax in image tags documentation
+- #2405: @josegonzalez Fully document the ps plugin
+- #2409: @josegonzalez Document caveats around ps:rebuild and tags/tar deployed applications
+- #2416: @njaxx Adds a mention of manually adding nginx entry
+- #2420: @c990802 Update command example for consistency
+- #2410: @IlyaSemenov Clarify domains help, improve domains unit tests
+- #2429: @enisozgen Minor documentation fixes
+- #2431: @josegonzalez Add missing redirect for deployment/deployment-tasks
+
+## 0.7.1
+
+### Bug Fixes
+
+- #2348: @josegonzalez Correct the version in use for ssh-keys
+- #2369: @u2mejc Fix ssh-keys:add permission error
+- #2377: @ebeigarts Do not use http_proxy env variables for CHECKS
+- #2360: @xadh00m Allow hyphen in TLD
+- #2387: @michaelshobbs Silence find warnings under Ubuntu 16.04
+- #2390: @josegonzalez Actually stop the dokku-installer service
+
+### New Features
+
+- #2358: @josegonzalez Guard against poodle vulnerability by default
+- #2385: @michaelshobbs Actually merge dokku-app-user into core
+
+### Documentation
+
+- #2337: @josegonzalez Update deprecated plugins list
+- #2352: @miguelcobain Fix typos in plugin-triggers docs
+- #2353: @miguelcobain Add a note about making plugins executable
+- #2345: @johnfraney Update list of officially supported distributions
+- #2354: @josegonzalez Dockerfile deploys do not support mounted volumes
+- #2371: @michaelshobbs Moved some plugin repos to michaelshobbs
+- #2381: @michaelshobbs Fail rest of bats file on first test failure
+- #2382: @alexgleason Fix typo "exampple" to "example"
+- #2386: @josegonzalez Add a migration guide for 0.7.0
+- #2388: @josegonzalez Add documentation for proxy ports scheme handling
+- #2389: @josegonzalez Add plugin management documentation
+
+
 ## 0.7.0
 
 Another great minor release! There are no known backwards incompatibilities with this release, though the following may be of interest to our users:
